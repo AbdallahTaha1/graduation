@@ -63,7 +63,7 @@ namespace graduation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser([FromForm]User user)
         {
             _context.Users.Add(user);
             
@@ -72,7 +72,7 @@ namespace graduation.Controllers
             return CreatedAtAction("GetUser", new { id = user.UserId }, user);
         }
 
-=        [HttpDelete("{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             if (_context.Users == null)
